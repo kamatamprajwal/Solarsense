@@ -16,6 +16,13 @@ Standalone /app/solarsense (symlink to /app/backend/solarsense) + mounted in /ap
 - Extras: simulator controls (pause/speed/anomaly rate/inject/reset), 48-panel twin with service, ack alerts, 24h forecast, what-if predictor + sensitivity + revenue, CSV exports, AI copilot w/ quick prompts + export
 - Tested: 27/27 backend, frontend 100% (iteration_1)
 
+## Iteration 2 (2026-06)
+- Anomaly History Log: every twin fault persisted in Mongo (anomaly_history) via event hooks; ack/service update status; filters, stats, CSV export (/incidents)
+- Fault Alert Emails: Resend (Emergent-managed), recipients/severity/cooldown in app settings, digest per cooldown, test send, email log
+- Cleaning Planner: multi-day XGBoost forecast + soiling loss -> best workable day (rain skipped), crew jobs schedule/complete (/cleaning)
+- Soiled panels no longer self-recover except in rain
+- Tested: iteration_2 backend 23/23, frontend 100%
+
 ## Backlog
 - P1: upload new CSV from UI and retrain; persist anomaly history in Mongo
 - P2: email/Slack alerts; multi-site support

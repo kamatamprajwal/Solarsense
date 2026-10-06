@@ -1,0 +1,26 @@
+{
+  "summary": "Tested new SolarSense features: Anomaly History, Fault Alert Emails (Resend digest), Cleaning Schedule Planner. Backend: 23/23 pytest cases passing in /app/backend/tests/test_new_features.py (history list/filters/stats, ack+persistence, service-resolves-open, alerts settings validation incl. 422 for bad email/>5 recipients/bad cooldown/bad severity, test alert 400 w/o recipients, send→429 cooldown, email_log, status, digest delivery with faults emailed and email_log entry kind=digest status=sent, cleaning-plan default/14/params/422, jobs CRUD incl. unknown panel 400, complete→panel health 100, 404 unknown job). Rainy days (cloud>75) never recommended – verified both in API and UI (Oct 14 'Rain – crew off'). Frontend: /incidents loads with 4 history-kpi-* cards, filters (panel/type/severity/status), history-table, pagination buttons, export-history-btn, alert settings (recipient-input, add-recipient-btn, remove-recipient-chip, severity-select, cooldown-input, alerts-enabled-switch, save-alert-settings-btn, send-test-alert-btn), email-log all present and functional (recipient add+save shows 'Alert settings saved' toast). /cleaning: horizon-7/horizon-14 switching works (7→14 cards), plan-tariff-input, plan-cost-input, candidate-list with 6 soiled panels, recommendation-message, benefit-chart, plan-day-{i} cards, schedule-cleaning-btn creates job, complete-job-{id} completes it (verified via API). Sidebar nav-incidents and nav-cleaning both navigate correctly. Regression: Overview still shows 12 KPIs. Simulator and alert settings restored to defaults at end.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "test_report_links": [
+    "/app/backend/tests/test_new_features.py",
+    "/app/backend/tests/test_solarsense.py",
+    "/app/test_reports/pytest/pytest_new_features.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "alerts.py reads EMERGENT_EMAIL_KEY/EMAIL_FROM_NAME at import time (os.environ[...]) - will crash import if env missing; consider lazy init with clean 500. Same pattern as assistant.py noted in iteration_1.",
+    "history.queue is unbounded asyncio.Queue - if Mongo stalls, memory grows. Low risk at demo scale but worth a maxsize.",
+    "planner.forecast_days reuses global np.random seeded by date.toordinal, which is deterministic per day – good for stability. However the inner 'cloud = rng.uniform(0,95)' is overwritten in the loop so the first-hour cloud base is effectively ignored. Minor.",
+    "alerts.pending is a module-level list capped by 'del pending[:-50]' - safe but silently drops older faults; consider explicit log when truncating.",
+    "planner.create_job accepts arbitrary 'date' string (10 chars) without validating ISO format; a non-date like 'abcdefghij' would be stored. Low priority."
+  ],
+  "updated_files": ["/app/backend/tests/test_new_features.py"],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "test_credentials": "N/A (no auth). Email: delivered@resend.dev only.",
+  "seed_data_creation": "Created a few cleaning_jobs rows in Mongo during jobs CRUD test (completed) and anomaly_history rows via simulator speed-up (anomaly_rate 0.5/0.6). Not cleaned - these are expected demo data. Simulator & alert settings restored to defaults.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Two pytest files cover full backend: /app/backend/tests/test_solarsense.py (27 tests, iteration_1) + /app/backend/tests/test_new_features.py (23 tests, iteration_2). Total ~50 tests, ~50s. Email digest verified via /api/alerts/log (kind=digest, status=sent). Sidebar test-ids: nav-overview, nav-array, nav-predictor, nav-ml-lab, nav-assistant, nav-architecture, nav-incidents, nav-cleaning. Simulator restored (paused=false, speed=1, anomaly_rate=0.08); alert settings restored (recipients=[], enabled=true, min_severity=critical, cooldown_minutes=10).",
+  "rca of the issue": "No bugs found."
+}

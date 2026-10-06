@@ -15,7 +15,7 @@ export function DayCard({ d, i, selected, onSelect }) {
       <Icon className={`h-6 w-6 mt-3 ${d.rain_likely ? "text-cyan" : d.avg_cloud_pct > 45 ? "text-muted-foreground" : "text-solar"}`} />
       <div className="mt-3 font-mono text-sm font-bold">{d.forecast_kwh} <span className="text-[10px] text-muted-foreground">kWh</span></div>
       <div className="font-mono text-[11px] text-muted-foreground">{d.avg_cloud_pct}% cloud</div>
-      <div className={`mt-2 font-mono text-xs font-bold ${d.net_benefit_usd > 0 ? "text-energy" : "text-alert"}`}>{d.net_benefit_usd > 0 ? "+" : ""}${d.net_benefit_usd}</div>
+      <div className={`mt-2 font-mono text-xs font-bold ${d.net_benefit_usd > 0 ? "text-energy" : "text-alert"}`}>{d.net_benefit_usd > 0 ? "+" : "-"}${Math.abs(d.net_benefit_usd)}</div>
       <div className="text-[10px] text-muted-foreground">{d.rain_likely ? "Rain — crew off" : "net if cleaned"}</div>
     </button>
   );

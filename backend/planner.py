@@ -96,7 +96,7 @@ async def cleaning_plan(days: int = Query(7, ge=3, le=14), tariff: float = Query
 
 
 class JobCreate(BaseModel):
-    date: str = Field(..., min_length=10, max_length=10)
+    date: str = Field(..., pattern=r"^\d{4}-\d{2}-\d{2}$")
     panel_ids: List[str] = Field(..., min_length=1, max_length=48)
 
 
