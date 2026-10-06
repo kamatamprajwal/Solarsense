@@ -1,0 +1,169 @@
+{
+  "project_name": "SolarSense - Predictive Solar Array Monitoring Platform",
+  "app_type": "dashboard",
+  "theme": {
+    "support_dual_mode": true,
+    "default_mode": "dark",
+    "dark_theme": {
+      "background": "#030712",
+      "surface": "#0F172A",
+      "surface_hover": "#1E293B",
+      "border": "#1E293B",
+      "border_accent": "#334155",
+      "text_primary": "#F8FAFC",
+      "text_secondary": "#94A3B8",
+      "text_muted": "#64748B",
+      "solar_amber": "#F59E0B",
+      "amber_glow": "rgba(245, 158, 11, 0.15)",
+      "energy_emerald": "#10B981",
+      "emerald_glow": "rgba(16, 185, 129, 0.15)",
+      "alert_crimson": "#EF4444",
+      "crimson_glow": "rgba(239, 68, 68, 0.15)",
+      "cyber_cyan": "#06B6D4",
+      "violet_cluster": "#8B5CF6"
+    },
+    "light_theme": {
+      "background": "#F8FAFC",
+      "surface": "#FFFFFF",
+      "surface_hover": "#F1F5F9",
+      "border": "#E2E8F0",
+      "border_accent": "#CBD5E1",
+      "text_primary": "#0F172A",
+      "text_secondary": "#475569",
+      "text_muted": "#64748B",
+      "solar_amber": "#D97706",
+      "amber_glow": "rgba(217, 119, 6, 0.12)",
+      "energy_emerald": "#059669",
+      "emerald_glow": "rgba(5, 150, 105, 0.12)",
+      "alert_crimson": "#DC2626",
+      "crimson_glow": "rgba(220, 38, 38, 0.12)",
+      "cyber_cyan": "#0891B2",
+      "violet_cluster": "#7C3AED"
+    }
+  },
+  "typography": {
+    "font_family_heading": "'Outfit', 'Manrope', -apple-system, sans-serif",
+    "font_family_body": "'Inter', -apple-system, sans-serif",
+    "font_family_mono": "'JetBrains Mono', 'IBM Plex Mono', monospace",
+    "headings": {
+      "h1": "text-3xl sm:text-4xl font-extrabold tracking-tight",
+      "h2": "text-2xl sm:text-3xl font-bold tracking-tight",
+      "h3": "text-xl sm:text-2xl font-semibold tracking-tight",
+      "h4": "text-lg sm:text-xl font-medium"
+    },
+    "telemetry_value": "font-mono font-bold tracking-tight text-2xl sm:text-3xl text-primary",
+    "forbidden_fonts": ["space grotesk"]
+  },
+  "forbidden_colors": ["#1B93A4", "#7351B7"],
+  "layout_and_navigation": {
+    "structure": "Sidebar + Sticky Top Header with Real-time Clock, Telemetry Status Indicator, Simulation Controls (Pause/Resume, Clock Speed, Anomaly Rate), Theme Toggle, and Navigation Tabs",
+    "navigation_tabs": [
+      {
+        "id": "overview",
+        "label": "Overview & Live Telemetry",
+        "icon": "Activity",
+        "description": "Live KPI cards, 24h Yield Actual vs Expected, Residuals, Weather conditions, Anomaly Stream"
+      },
+      {
+        "id": "array",
+        "label": "Panel Array Digital Twin",
+        "icon": "Grid",
+        "description": "6x8 Interactive grid map of solar panels with real-time health, soiling, and fault indicators"
+      },
+      {
+        "id": "predictor",
+        "label": "What-If Yield Predictor",
+        "icon": "Sliders",
+        "description": "XGBoost ML model inference calculator with interactive sliders and financial revenue loss estimation"
+      },
+      {
+        "id": "analytics",
+        "label": "ML Lab & DBSCAN Anomaly Engine",
+        "icon": "BarChart3",
+        "description": "Hardware degradation clusters, feature importance, residual distribution, and evaluation metrics (MAE/MSE)"
+      },
+      {
+        "id": "assistant",
+        "label": "AI Maintenance Assistant",
+        "icon": "Bot",
+        "description": "LLM Copilot for diagnostic troubleshooting, automated work order recommendations, and hardware advice"
+      },
+      {
+        "id": "architecture",
+        "label": "Pipeline & Digital Twin Arch",
+        "icon": "Cpu",
+        "description": "System architecture diagram, live telemetry generator specifications, simulator speed controls, and CSV telemetry export"
+      }
+    ]
+  },
+  "component_guidelines": {
+    "file_extension": ".js",
+    "use_shadcn_ui": true,
+    "charts_library": "recharts",
+    "key_components": [
+      {
+        "name": "LiveKPICard",
+        "purpose": "Displays critical telemetry metric (Yield, Efficiency %, Irradiance, Module Temp, Degradation, Uptime)",
+        "features": "Subtle border, live pulsing trend indicator, comparison delta with historical average, tooltip explanation"
+      },
+      {
+        "name": "PanelArrayGrid",
+        "purpose": "Visualizes 48 solar panels (6x8 grid) with color-coded health status",
+        "features": "Hover inspection tooltip, click to open panel detail drawer, status filter (All, Faulted, Soiled, Degrading, Healthy), quick batch diagnostic trigger"
+      },
+      {
+        "name": "YieldComparisonChart",
+        "purpose": "Dual-line area chart comparing expected yield vs actual yield over rolling 24 points",
+        "features": "Custom tooltips with residual diff, gradient fill under lines, anomaly timestamp markers"
+      },
+      {
+        "name": "ResidualChart",
+        "purpose": "Bar/Line chart of yield error residual (Actual - Expected)",
+        "features": "Color scale for normal vs anomalous error thresholds, zero line reference"
+      },
+      {
+        "name": "WhatIfPredictorForm",
+        "purpose": "Interactive parameter tweaking (Hour, Temp, Module Temp, Irradiance, Cloud Cover)",
+        "features": "Real-time API POST /predict call, comparison against baseline, financial impact calculator ($ / kWh)"
+      },
+      {
+        "name": "DBSCANClusterPlot",
+        "purpose": "Scatter plot visualizing DBSCAN hardware degradation clusters (Normal vs Soiling vs Inverter Failure vs Unknown)",
+        "features": "Cluster legend, point selection, noise/outlier highlighting"
+      },
+      {
+        "name": "AIMaintenanceAssistant",
+        "purpose": "AI Copilot chat interface with pre-built prompt triggers ('Explain panel P-7 fault', 'Generate maintenance schedule', 'Calculate cleaning ROI')",
+        "features": "Streaming response UI, copy suggestion button, diagnostic summary export"
+      },
+      {
+        "name": "SimulatorController",
+        "purpose": "Control bar for live digital twin telemetry generator",
+        "features": "Play/Pause tick, tick interval speed (1x, 2x, 5x), force anomaly injection, anomaly probability rate slider, tick counter display"
+      }
+    ]
+  },
+  "image_urls": {
+    "solar_farm_hero": "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHwxfHxzb2xhciUyMGZhcm0lMjBwYW5lbHMlMjBjb250cm9sJTIwcm9vbSUyMGVuZXJneSUyMG1vbml0b3J8ZW58MHx8fHwxNzkxMjcyODE1fDA&ixlib=rb-4.1.0&q=85",
+    "desert_solar_array": "https://images.unsplash.com/photo-1674606071893-2a9023075f70?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHwyfHxzb2xhciUyMGZhcm0lMjBwYW5lbHMlMjBjb250cm9sJTIwcm9vbSUyMGVuZXJneSUyMG1vbml0b3J8ZW58MHx8fHwxNzkxMjcyODE1fDA&ixlib=rb-4.1.0&q=85",
+    "grid_power_lines": "https://images.unsplash.com/photo-1773624737992-6c7f16a39c9a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHw0fHxzb2xhciUyMGZhcm0lMjBwYW5lbHMlMjBjb250cm9sJTIwcm9vbSUyMGVuZXJneSUyMG1vbml0b3J8ZW58MHx8fHwxNzkxMjcyODE1fDA&ixlib=rb-4.1.0&q=85"
+  },
+  "instructions_to_main_agent": {
+    "general": [
+      "Use JavaScript React (.js extension) for all frontend code.",
+      "Ensure all interactive elements and data displays contain data-testid attributes for reliable testing.",
+      "Implement a clean theme toggle allowing the user to switch between 'Dark Industrial Control-Room' and 'Light Clean Energy' aesthetics seamlessly.",
+      "Maintain active telemetry pooling from the FastAPI backend endpoint /api/telemetry, /api/anomalies, and /api/predict.",
+      "Handle offline or simulated clock ticks gracefully with clear visual indicators when simulation is paused or active.",
+      "Use recharts for all interactive charts (Yield comparison, Residuals, DBSCAN scatter plot, Feature Importance).",
+      "Include CSV Export functionality for telemetry and anomaly data on the Overview and Architecture pages."
+    ],
+    "testing_attributes": "All buttons, inputs, tabs, selects, modal triggers, and KPI cards MUST have data-testid attributes using kebab-case (e.g. data-testid='tab-overview', data-testid='kpi-current-yield', data-testid='predict-submit-btn')."
+  },
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": {
+    "do_not_use_transparent_header": true,
+    "data_testid_required": true,
+    "contrast_ratio": "WCAG AA compliant across both light and dark themes",
+    "responsive": "Mobile-first responsive layout with sidebar collapse capability"
+  }
+}

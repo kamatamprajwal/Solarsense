@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 210 40% 98%;
+        --foreground: 222 47% 11%;
+        --card: 0 0% 100%;
+        --card-foreground: 222 47% 11%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 222 47% 11%;
+        --primary: 32 95% 44%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 210 40% 96%;
+        --secondary-foreground: 222 47% 11%;
+        --muted: 210 40% 96%;
+        --muted-foreground: 215 19% 35%;
+        --accent: 210 40% 94%;
+        --accent-foreground: 222 47% 11%;
+        --destructive: 0 72% 51%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 214 32% 91%;
+        --input: 214 32% 88%;
+        --ring: 32 95% 44%;
+        --radius: 0.75rem;
+        --solar: 217 119 6;
+        --energy: 5 150 105;
+        --alert: 220 38 38;
+        --cyan: 8 145 178;
+        --violet: 124 58 237;
+        --grid-line: 15 23 42;
+    }
+    .dark {
+        --background: 224 71% 4%;
+        --foreground: 210 40% 98%;
+        --card: 222 47% 11%;
+        --card-foreground: 210 40% 98%;
+        --popover: 222 47% 11%;
+        --popover-foreground: 210 40% 98%;
+        --primary: 38 92% 50%;
+        --primary-foreground: 224 71% 4%;
+        --secondary: 217 33% 17%;
+        --secondary-foreground: 210 40% 98%;
+        --muted: 217 33% 17%;
+        --muted-foreground: 215 20% 65%;
+        --accent: 217 33% 17%;
+        --accent-foreground: 210 40% 98%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 217 33% 17%;
+        --input: 215 25% 27%;
+        --ring: 38 92% 50%;
+        --solar: 245 158 11;
+        --energy: 16 185 129;
+        --alert: 239 68 68;
+        --cyan: 6 182 212;
+        --violet: 139 92 246;
+        --grid-line: 148 163 184;
+    }
+}
+
+@layer base {
+    * { @apply border-border; }
+    body {
+        @apply bg-background text-foreground antialiased;
+        font-family: 'Manrope', -apple-system, sans-serif;
+    }
+    h1, h2, h3, h4, .font-display { font-family: 'Outfit', sans-serif; }
+    .font-mono, code, pre { font-family: 'JetBrains Mono', monospace; }
+    ::selection { background: rgb(var(--solar) / 0.3); }
+}
+
+@layer components {
+    .panel {
+        @apply rounded-xl border bg-card text-card-foreground;
+        box-shadow: 0 1px 0 rgb(var(--grid-line) / 0.04), 0 8px 24px -12px rgb(var(--grid-line) / 0.12);
+    }
+    .eyebrow {
+        @apply text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground;
+    }
+    .grid-bg {
+        background-image:
+            linear-gradient(rgb(var(--grid-line) / 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgb(var(--grid-line) / 0.05) 1px, transparent 1px);
+        background-size: 32px 32px;
+    }
+    .live-dot { position: relative; }
+    .live-dot::after {
+        content: ''; position: absolute; inset: -4px; border-radius: 9999px;
+        background: currentColor; opacity: 0.35; animation: ping-soft 1.8s ease-out infinite;
+    }
+    .reveal { animation: reveal 0.55s cubic-bezier(.2,.7,.2,1) both; }
+    .prose-chat p { margin: 0.4rem 0; }
+    .prose-chat ul, .prose-chat ol { padding-left: 1.2rem; margin: 0.4rem 0; list-style: disc; }
+    .prose-chat ol { list-style: decimal; }
+    .prose-chat h1, .prose-chat h2, .prose-chat h3 { font-weight: 700; margin: 0.7rem 0 0.3rem; font-size: 0.95rem; }
+    .prose-chat code { background: hsl(var(--muted)); padding: 0 4px; border-radius: 4px; font-size: 0.8em; }
+    .prose-chat strong { color: rgb(var(--solar)); }
+}
+
+@keyframes ping-soft { 0% { transform: scale(0.6); opacity: 0.5; } 100% { transform: scale(2.2); opacity: 0; } }
+@keyframes reveal { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+.recharts-cartesian-grid line { stroke: rgb(var(--grid-line) / 0.08); }
+.recharts-text { fill: hsl(var(--muted-foreground)); font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+
+[data-debug-wrapper="true"] { display: contents !important; }
