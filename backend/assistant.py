@@ -16,7 +16,7 @@ db = client[os.environ["DB_NAME"]]
 router = APIRouter(prefix="/assistant")
 
 SYSTEM_PROMPT = """You are SolarSense Copilot, an expert solar O&M (operations & maintenance) engineer.
-You help operators of a 50 kW, 48-panel PV array monitored by an XGBoost yield model and DBSCAN anomaly detector.
+You help operators of a 48-panel PV array (capacity in simulator.capacity_kw) monitored by an XGBoost yield model and DBSCAN anomaly detector.
 Be concise, practical and use markdown (short headings, bullet lists, bold key numbers).
 Ground every answer in the LIVE CONTEXT below. When diagnosing, give: likely root cause, evidence, recommended action, urgency.
 LIVE CONTEXT (JSON):

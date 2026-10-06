@@ -83,11 +83,17 @@ def ensure_artifacts() -> None:
         unsupervised_dbscan.run()
 
 
+capacity_kw = physics.ARRAY_CAPACITY_KW
+
+
 def load_model():
     """Load the trained XGBoost model with joblib (called on startup)."""
-    global model
+    global model, capacity_kw
     ensure_artifacts()
     model = joblib.load(MODEL_PATH)
+    # Array size is inferred from the training data so KPIs match the dataset's scale.
+    with open(METRICS_PATH) as fh:
+        capacity_kw = json.load(fh).get("capacity_kw_est", physics.ARRAY_CAPACITY_KW)
     return model
 
 
@@ -274,7 +280,7 @@ class DigitalTwin:
             "fleet_health_pct": round(sum(p["health"] for p in self.panels) / PANEL_COUNT, 1),
             "healthy_panels": healthy,
             "panel_count": PANEL_COUNT,
-            "capacity_kw": physics.ARRAY_CAPACITY_KW,
+            "capacity_kw": capacity_kw,
             "tariff_usd_per_kwh": TARIFF_USD_PER_KWH,
         }
 

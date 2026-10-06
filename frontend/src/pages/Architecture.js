@@ -8,7 +8,7 @@ import { PageHeader, Panel } from "@/components/common";
 import { api, downloadCsv } from "@/lib/api";
 
 const STAGES = [
-  { icon: Database, title: "generate_mock_data.py", desc: "10,000 hourly rows · physics-based irradiance, NOCT module heating, cloud random-walk", out: "solar_telemetry.csv", tone: "cyan" },
+  { icon: Database, title: "solar_telemetry.csv", desc: "Your uploaded 8,760-row hourly dataset (2023). generate_mock_data.py remains as a synthetic fallback", out: "training data", tone: "cyan" },
   { icon: Brain, title: "supervised_xgboost.py", desc: "XGBRegressor on 5 features · 80/20 split · MAE/MSE · residuals", out: "xgboost_yield_model.pkl", tone: "solar" },
   { icon: ScanSearch, title: "unsupervised_dbscan.py", desc: "Daylight filter · StandardScaler · PCA(2) · DBSCAN → label −1 = anomaly", out: "dbscan_results.json", tone: "violet" },
   { icon: Radio, title: "api.py · Digital twin", desc: "asyncio loop every 3s · +1h sim clock · model inference · 8% fault injection", out: "REST /api/*", tone: "energy" },

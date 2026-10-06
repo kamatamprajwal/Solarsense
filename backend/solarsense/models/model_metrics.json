@@ -1,10 +1,17 @@
 {
-  "mae": 0.3606,
-  "mse": 2.0838,
-  "rmse": 1.4436,
-  "r2": 0.9792,
-  "n_train": 8000,
-  "n_test": 2000,
+  "dataset": {
+    "rows": 8760,
+    "start": "2023-01-01 00:00:00",
+    "end": "2023-12-31 23:00:00",
+    "max_yield_kwh": 3.35
+  },
+  "capacity_kw_est": 4.04,
+  "mae": 0.0303,
+  "mse": 0.0097,
+  "rmse": 0.0987,
+  "r2": 0.9897,
+  "n_train": 7008,
+  "n_test": 1752,
   "features": [
     "hour_of_day",
     "ambient_temp_c",
@@ -13,11 +20,11 @@
     "cloud_cover_pct"
   ],
   "feature_importance": {
-    "hour_of_day": 0.0339,
-    "ambient_temp_c": 0.0111,
-    "module_temp_c": 0.1223,
-    "solar_irradiance_w_m2": 0.8089,
-    "cloud_cover_pct": 0.0238
+    "hour_of_day": 0.0107,
+    "ambient_temp_c": 0.0119,
+    "module_temp_c": 0.1643,
+    "solar_irradiance_w_m2": 0.8016,
+    "cloud_cover_pct": 0.0115
   },
   "hyperparameters": {
     "n_estimators": 400,
@@ -26,88 +33,20 @@
   },
   "pred_vs_actual_sample": [
     {
-      "actual": 12.138,
-      "predicted": 11.887
+      "actual": 0.646,
+      "predicted": 0.639
     },
     {
       "actual": 0.0,
-      "predicted": 0.005
-    },
-    {
-      "actual": 4.58,
-      "predicted": 4.599
-    },
-    {
-      "actual": 10.989,
-      "predicted": 10.524
-    },
-    {
-      "actual": 18.556,
-      "predicted": 18.621
+      "predicted": 0.0
     },
     {
       "actual": 0.0,
-      "predicted": 0.004
-    },
-    {
-      "actual": 15.428,
-      "predicted": 15.52
+      "predicted": 0.0
     },
     {
       "actual": 0.0,
-      "predicted": -0.001
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.006
-    },
-    {
-      "actual": 15.798,
-      "predicted": 15.735
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.029
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.008
-    },
-    {
-      "actual": 21.176,
-      "predicted": 21.302
-    },
-    {
-      "actual": 27.003,
-      "predicted": 26.455
-    },
-    {
-      "actual": 28.418,
-      "predicted": 27.792
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.033
-    },
-    {
-      "actual": 24.491,
-      "predicted": 23.811
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.012
-    },
-    {
-      "actual": 36.288,
-      "predicted": 35.634
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.005
-    },
-    {
-      "actual": 14.783,
-      "predicted": 15.251
+      "predicted": 0.0
     },
     {
       "actual": 0.0,
@@ -115,331 +54,15 @@
     },
     {
       "actual": 0.0,
-      "predicted": 0.001
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.003
-    },
-    {
-      "actual": 22.691,
-      "predicted": 22.351
-    },
-    {
-      "actual": 13.532,
-      "predicted": 12.925
-    },
-    {
-      "actual": 4.621,
-      "predicted": 4.587
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.002
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.005
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.001
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.018
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.001
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.005
-    },
-    {
-      "actual": 22.437,
-      "predicted": 22.704
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.006
-    },
-    {
-      "actual": 12.507,
-      "predicted": 12.359
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.004
-    },
-    {
-      "actual": 25.061,
-      "predicted": 24.989
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.006
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.047
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.006
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.005
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.005
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.002
-    },
-    {
-      "actual": 34.309,
-      "predicted": 34.812
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.059
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.004
-    },
-    {
-      "actual": 8.908,
-      "predicted": 8.946
-    },
-    {
-      "actual": 17.95,
-      "predicted": 17.263
-    },
-    {
-      "actual": 24.74,
-      "predicted": 24.51
-    },
-    {
-      "actual": 17.822,
-      "predicted": 17.92
-    },
-    {
-      "actual": 18.417,
-      "predicted": 18.232
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.001
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.024
-    },
-    {
-      "actual": 6.022,
-      "predicted": 6.054
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.001
-    },
-    {
-      "actual": 20.566,
-      "predicted": 18.087
-    },
-    {
-      "actual": 3.802,
-      "predicted": 3.806
-    },
-    {
-      "actual": 7.695,
-      "predicted": 7.401
-    },
-    {
-      "actual": 19.528,
-      "predicted": 19.271
-    },
-    {
-      "actual": 15.436,
-      "predicted": 15.108
-    },
-    {
-      "actual": 9.053,
-      "predicted": 8.782
-    },
-    {
-      "actual": 25.637,
-      "predicted": 25.336
-    },
-    {
-      "actual": 12.583,
-      "predicted": 12.45
-    },
-    {
-      "actual": 31.24,
-      "predicted": 30.91
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.005
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.002
-    },
-    {
-      "actual": 5.54,
-      "predicted": 5.61
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.021
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.006
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.011
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.003
-    },
-    {
-      "actual": 21.69,
-      "predicted": 21.015
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.052
-    },
-    {
-      "actual": 9.507,
-      "predicted": 9.704
-    },
-    {
-      "actual": 26.867,
-      "predicted": 26.266
-    },
-    {
-      "actual": 29.64,
-      "predicted": 28.572
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.008
-    },
-    {
-      "actual": 33.483,
-      "predicted": 21.704
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.008
-    },
-    {
-      "actual": 26.989,
-      "predicted": 26.675
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.004
-    },
-    {
-      "actual": 6.745,
-      "predicted": 6.254
-    },
-    {
-      "actual": 8.371,
-      "predicted": 8.373
-    },
-    {
-      "actual": 24.466,
-      "predicted": 23.677
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.004
+      "predicted": -0.0
     },
     {
       "actual": 0.0,
       "predicted": 0.0
     },
     {
-      "actual": 12.149,
-      "predicted": 11.36
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.004
-    },
-    {
-      "actual": 7.189,
-      "predicted": 7.173
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.005
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.005
-    },
-    {
-      "actual": 25.889,
-      "predicted": 25.459
-    },
-    {
-      "actual": 26.769,
-      "predicted": 26.95
-    },
-    {
-      "actual": 19.926,
-      "predicted": 20.263
-    },
-    {
-      "actual": 32.662,
-      "predicted": 31.608
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.001
-    },
-    {
-      "actual": 6.826,
-      "predicted": 6.919
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.001
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.003
-    },
-    {
-      "actual": 10.67,
-      "predicted": 10.246
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.003
-    },
-    {
-      "actual": 17.564,
-      "predicted": 17.569
-    },
-    {
-      "actual": 9.485,
-      "predicted": 9.307
+      "actual": 0.502,
+      "predicted": 0.721
     },
     {
       "actual": 0.0,
@@ -447,463 +70,131 @@
     },
     {
       "actual": 0.0,
-      "predicted": -0.003
-    },
-    {
-      "actual": 19.141,
-      "predicted": 14.174
-    },
-    {
-      "actual": 31.29,
-      "predicted": 31.704
+      "predicted": 0.0
     },
     {
       "actual": 0.0,
-      "predicted": -0.006
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.576,
+      "predicted": 0.595
+    },
+    {
+      "actual": 2.481,
+      "predicted": 2.461
+    },
+    {
+      "actual": 2.033,
+      "predicted": 2.048
     },
     {
       "actual": 0.0,
-      "predicted": -0.008
+      "predicted": 0.0
     },
     {
-      "actual": 16.136,
-      "predicted": 16.55
-    },
-    {
-      "actual": 9.598,
-      "predicted": 9.905
+      "actual": 0.569,
+      "predicted": 0.521
     },
     {
       "actual": 0.0,
-      "predicted": 0.051
+      "predicted": -0.0
     },
     {
-      "actual": 11.994,
-      "predicted": 10.922
+      "actual": 0.079,
+      "predicted": 0.075
     },
     {
-      "actual": 0.0,
-      "predicted": 0.002
-    },
-    {
-      "actual": 27.725,
-      "predicted": 27.829
-    },
-    {
-      "actual": 8.535,
-      "predicted": 13.146
+      "actual": 2.333,
+      "predicted": 2.304
     },
     {
       "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 1.068,
+      "predicted": 1.112
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 1.107,
+      "predicted": 1.135
+    },
+    {
+      "actual": 1.371,
+      "predicted": 1.298
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.925,
+      "predicted": 0.948
+    },
+    {
+      "actual": 2.486,
+      "predicted": 2.547
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 1.45,
+      "predicted": 2.025
+    },
+    {
+      "actual": 1.501,
+      "predicted": 2.135
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 3.193,
+      "predicted": 3.15
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.098,
+      "predicted": 0.083
+    },
+    {
+      "actual": 1.438,
+      "predicted": 1.473
+    },
+    {
+      "actual": 0.009,
+      "predicted": 0.004
+    },
+    {
+      "actual": 0.836,
+      "predicted": 0.832
+    },
+    {
+      "actual": 0.041,
       "predicted": 0.04
     },
     {
-      "actual": 5.151,
-      "predicted": 4.81
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.006
-    },
-    {
-      "actual": 14.948,
-      "predicted": 15.206
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.005
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.001
-    },
-    {
-      "actual": 15.405,
-      "predicted": 15.578
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.08
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.002
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.005
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.008
-    },
-    {
-      "actual": 20.118,
-      "predicted": 18.38
-    },
-    {
-      "actual": 29.763,
-      "predicted": 29.916
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.006
-    },
-    {
-      "actual": 18.395,
-      "predicted": 17.316
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.006
-    },
-    {
-      "actual": 22.648,
-      "predicted": 22.102
-    },
-    {
-      "actual": 15.154,
-      "predicted": 15.074
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.004
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.061
-    },
-    {
-      "actual": 17.386,
-      "predicted": 17.147
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.005
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.004
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.002
-    },
-    {
-      "actual": 7.865,
-      "predicted": 7.365
-    },
-    {
-      "actual": 34.416,
-      "predicted": 31.862
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.001
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.002
-    },
-    {
-      "actual": 7.128,
-      "predicted": 7.046
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.001
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.001
-    },
-    {
-      "actual": 38.821,
-      "predicted": 38.107
-    },
-    {
-      "actual": 19.717,
-      "predicted": 19.376
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.01
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.188
-    },
-    {
-      "actual": 9.146,
-      "predicted": 8.983
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.03
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.005
-    },
-    {
-      "actual": 25.244,
-      "predicted": 24.66
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.005
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.005
-    },
-    {
-      "actual": 26.674,
-      "predicted": 26.6
-    },
-    {
-      "actual": 31.516,
-      "predicted": 30.101
-    },
-    {
-      "actual": 22.691,
-      "predicted": 22.483
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.007
-    },
-    {
-      "actual": 24.696,
-      "predicted": 23.249
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.034
-    },
-    {
-      "actual": 17.162,
-      "predicted": 16.978
-    },
-    {
-      "actual": 11.866,
-      "predicted": 11.405
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.083
-    },
-    {
-      "actual": 27.26,
-      "predicted": 26.019
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.002
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.002
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.008
-    },
-    {
-      "actual": 6.264,
-      "predicted": 6.174
-    },
-    {
-      "actual": 18.133,
-      "predicted": 18.426
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.044
-    },
-    {
-      "actual": 16.423,
-      "predicted": 16.948
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.005
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.002
-    },
-    {
-      "actual": 15.355,
-      "predicted": 14.772
-    },
-    {
-      "actual": 8.569,
-      "predicted": 8.518
-    },
-    {
-      "actual": 23.549,
-      "predicted": 21.807
-    },
-    {
-      "actual": 7.983,
-      "predicted": 18.45
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.012
-    },
-    {
-      "actual": 23.622,
-      "predicted": 18.045
-    },
-    {
-      "actual": 30.177,
-      "predicted": 29.793
-    },
-    {
-      "actual": 9.125,
-      "predicted": 9.138
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.012
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.004
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.005
-    },
-    {
-      "actual": 15.879,
-      "predicted": 15.561
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.003
-    },
-    {
-      "actual": 33.216,
-      "predicted": 30.911
-    },
-    {
-      "actual": 26.632,
-      "predicted": 24.8
-    },
-    {
-      "actual": 21.295,
-      "predicted": 21.446
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.002
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.016
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.004
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.005
-    },
-    {
-      "actual": 8.688,
-      "predicted": 8.478
-    },
-    {
-      "actual": 8.17,
-      "predicted": 8.263
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.028
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.003
-    },
-    {
-      "actual": 29.951,
-      "predicted": 30.003
-    },
-    {
-      "actual": 13.241,
-      "predicted": 13.223
-    },
-    {
-      "actual": 30.606,
-      "predicted": 30.413
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.001
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.004
-    },
-    {
-      "actual": 10.948,
-      "predicted": 10.779
-    },
-    {
-      "actual": 28.377,
-      "predicted": 29.149
-    },
-    {
-      "actual": 11.975,
-      "predicted": 11.746
-    },
-    {
       "actual": 0.0,
       "predicted": 0.0
-    },
-    {
-      "actual": 24.603,
-      "predicted": 24.143
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.003
-    },
-    {
-      "actual": 11.807,
-      "predicted": 11.482
-    },
-    {
-      "actual": 4.273,
-      "predicted": 4.255
-    },
-    {
-      "actual": 12.519,
-      "predicted": 12.469
-    },
-    {
-      "actual": 16.949,
-      "predicted": 16.534
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.006
-    },
-    {
-      "actual": 4.604,
-      "predicted": 4.502
-    },
-    {
-      "actual": 7.327,
-      "predicted": 7.298
-    },
-    {
-      "actual": 20.176,
-      "predicted": 19.991
     },
     {
       "actual": 0.0,
@@ -911,79 +202,19 @@
     },
     {
       "actual": 0.0,
-      "predicted": -0.002
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.001
-    },
-    {
-      "actual": 7.829,
-      "predicted": 8.166
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.018
-    },
-    {
-      "actual": 27.068,
-      "predicted": 27.207
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.003
-    },
-    {
-      "actual": 14.91,
-      "predicted": 13.639
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.003
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.018
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.007
-    },
-    {
-      "actual": 9.846,
-      "predicted": 8.931
-    },
-    {
-      "actual": 0.0,
       "predicted": 0.002
     },
     {
-      "actual": 8.579,
-      "predicted": 8.486
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 1.121,
+      "predicted": 1.038
     },
     {
       "actual": 0.0,
-      "predicted": 0.006
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.005
-    },
-    {
-      "actual": 18.858,
-      "predicted": 17.933
-    },
-    {
-      "actual": 16.039,
-      "predicted": 16.004
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.001
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.001
+      "predicted": 0.0
     },
     {
       "actual": 0.0,
@@ -991,151 +222,67 @@
     },
     {
       "actual": 0.0,
-      "predicted": 0.006
+      "predicted": 0.0
+    },
+    {
+      "actual": 2.328,
+      "predicted": 2.321
+    },
+    {
+      "actual": 2.306,
+      "predicted": 2.265
+    },
+    {
+      "actual": 0.021,
+      "predicted": 0.017
+    },
+    {
+      "actual": 2.449,
+      "predicted": 2.404
+    },
+    {
+      "actual": 2.532,
+      "predicted": 2.198
+    },
+    {
+      "actual": 0.975,
+      "predicted": 1.409
     },
     {
       "actual": 0.0,
-      "predicted": -0.002
-    },
-    {
-      "actual": 21.544,
-      "predicted": 20.936
+      "predicted": 0.0
     },
     {
       "actual": 0.0,
-      "predicted": 0.006
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.475,
+      "predicted": 0.608
+    },
+    {
+      "actual": 2.19,
+      "predicted": 2.243
     },
     {
       "actual": 0.0,
-      "predicted": -0.007
-    },
-    {
-      "actual": 8.044,
-      "predicted": 7.712
+      "predicted": 0.0
     },
     {
       "actual": 0.0,
-      "predicted": -0.006
+      "predicted": 0.0
     },
     {
-      "actual": 26.964,
-      "predicted": 28.13
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.007
-    },
-    {
-      "actual": 5.021,
-      "predicted": 4.69
-    },
-    {
-      "actual": 36.423,
-      "predicted": 37.87
-    },
-    {
-      "actual": 14.969,
-      "predicted": 14.329
+      "actual": 1.487,
+      "predicted": 1.457
     },
     {
       "actual": 0.0,
-      "predicted": 0.002
+      "predicted": -0.0
     },
     {
-      "actual": 0.0,
-      "predicted": 0.005
-    },
-    {
-      "actual": 4.794,
-      "predicted": 4.708
-    },
-    {
-      "actual": 17.326,
-      "predicted": 17.963
-    },
-    {
-      "actual": 3.81,
-      "predicted": 3.313
-    },
-    {
-      "actual": 32.976,
-      "predicted": 32.659
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.003
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.007
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.005
-    },
-    {
-      "actual": 7.254,
-      "predicted": 7.286
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.001
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.001
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.007
-    },
-    {
-      "actual": 25.6,
-      "predicted": 25.893
-    },
-    {
-      "actual": 19.054,
-      "predicted": 18.466
-    },
-    {
-      "actual": 21.76,
-      "predicted": 20.881
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.002
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.022
-    },
-    {
-      "actual": 5.36,
-      "predicted": 5.416
-    },
-    {
-      "actual": 25.301,
-      "predicted": 24.67
-    },
-    {
-      "actual": 7.459,
-      "predicted": 7.196
-    },
-    {
-      "actual": 9.676,
-      "predicted": 9.946
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.022
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.005
-    },
-    {
-      "actual": 0.0,
-      "predicted": -0.005
+      "actual": 2.942,
+      "predicted": 2.799
     },
     {
       "actual": 0.0,
@@ -1143,19 +290,55 @@
     },
     {
       "actual": 0.0,
-      "predicted": -0.003
+      "predicted": -0.0
     },
     {
-      "actual": 29.098,
-      "predicted": 29.894
-    },
-    {
-      "actual": 0.0,
-      "predicted": 0.005
+      "actual": 2.24,
+      "predicted": 2.186
     },
     {
       "actual": 0.0,
-      "predicted": -0.003
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.825,
+      "predicted": 0.833
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 2.496,
+      "predicted": 2.534
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 2.043,
+      "predicted": 2.032
+    },
+    {
+      "actual": 2.638,
+      "predicted": 2.559
+    },
+    {
+      "actual": 1.977,
+      "predicted": 1.995
+    },
+    {
+      "actual": 1.172,
+      "predicted": 1.168
+    },
+    {
+      "actual": 2.288,
+      "predicted": 2.338
     },
     {
       "actual": 0.0,
@@ -1163,67 +346,891 @@
     },
     {
       "actual": 0.0,
-      "predicted": -0.002
-    },
-    {
-      "actual": 4.646,
-      "predicted": 4.601
+      "predicted": 0.0
     },
     {
       "actual": 0.0,
-      "predicted": 0.013
-    },
-    {
-      "actual": 12.26,
-      "predicted": 12.427
+      "predicted": -0.0
     },
     {
       "actual": 0.0,
-      "predicted": 0.005
+      "predicted": 0.0
     },
     {
-      "actual": 14.751,
-      "predicted": 14.614
+      "actual": 0.0,
+      "predicted": 0.0
     },
     {
       "actual": 0.0,
       "predicted": 0.001
     },
     {
-      "actual": 9.009,
-      "predicted": 9.137
+      "actual": 0.0,
+      "predicted": -0.0
     },
     {
       "actual": 0.0,
-      "predicted": 0.008
+      "predicted": -0.0
     },
     {
       "actual": 0.0,
-      "predicted": -0.003
+      "predicted": -0.006
+    },
+    {
+      "actual": 0.024,
+      "predicted": 0.022
+    },
+    {
+      "actual": 2.461,
+      "predicted": 2.43
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 1.447,
+      "predicted": 1.428
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.003
+    },
+    {
+      "actual": 2.897,
+      "predicted": 2.759
+    },
+    {
+      "actual": 1.831,
+      "predicted": 1.819
+    },
+    {
+      "actual": 2.966,
+      "predicted": 2.951
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 1.598,
+      "predicted": 1.58
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.703,
+      "predicted": 0.578
+    },
+    {
+      "actual": 2.918,
+      "predicted": 2.944
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 1.429,
+      "predicted": 1.949
+    },
+    {
+      "actual": 1.143,
+      "predicted": 1.199
+    },
+    {
+      "actual": 0.998,
+      "predicted": 1.01
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.591,
+      "predicted": 0.859
+    },
+    {
+      "actual": 2.368,
+      "predicted": 2.381
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.004
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.001
+    },
+    {
+      "actual": 1.864,
+      "predicted": 1.851
+    },
+    {
+      "actual": 1.003,
+      "predicted": 0.981
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 2.73,
+      "predicted": 2.601
+    },
+    {
+      "actual": 0.024,
+      "predicted": 0.026
+    },
+    {
+      "actual": 1.94,
+      "predicted": 1.861
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 2.854,
+      "predicted": 2.897
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 2.294,
+      "predicted": 2.242
+    },
+    {
+      "actual": 2.432,
+      "predicted": 2.38
+    },
+    {
+      "actual": 0.663,
+      "predicted": 0.641
+    },
+    {
+      "actual": 0.782,
+      "predicted": 0.774
+    },
+    {
+      "actual": 2.548,
+      "predicted": 2.581
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.354,
+      "predicted": 0.332
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.001
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 1.056,
+      "predicted": 1.038
+    },
+    {
+      "actual": 2.879,
+      "predicted": 2.861
+    },
+    {
+      "actual": 0.041,
+      "predicted": 0.035
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 2.513,
+      "predicted": 2.56
+    },
+    {
+      "actual": 1.966,
+      "predicted": 1.995
     },
     {
       "actual": 0.0,
       "predicted": 0.002
     },
     {
+      "actual": 1.19,
+      "predicted": 1.153
+    },
+    {
+      "actual": 2.941,
+      "predicted": 2.937
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 2.098,
+      "predicted": 2.125
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 2.211,
+      "predicted": 2.123
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 2.257,
+      "predicted": 2.263
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.001
+    },
+    {
+      "actual": 1.612,
+      "predicted": 1.578
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 1.807,
+      "predicted": 1.848
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 1.384,
+      "predicted": 1.367
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 2.504,
+      "predicted": 2.392
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 1.133,
+      "predicted": 1.146
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.001
+    },
+    {
+      "actual": 0.421,
+      "predicted": 0.4
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.358,
+      "predicted": 0.36
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
       "actual": 0.0,
       "predicted": 0.001
     },
     {
       "actual": 0.0,
-      "predicted": -0.003
-    },
-    {
-      "actual": 17.156,
-      "predicted": 16.892
+      "predicted": 0.001
     },
     {
       "actual": 0.0,
-      "predicted": 0.007
+      "predicted": 0.0
     },
     {
-      "actual": 5.498,
-      "predicted": 5.35
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 1.525,
+      "predicted": 1.949
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.001
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.007
+    },
+    {
+      "actual": 0.277,
+      "predicted": 0.284
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.166,
+      "predicted": 0.152
+    },
+    {
+      "actual": 2.438,
+      "predicted": 2.434
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.051,
+      "predicted": 0.043
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.834,
+      "predicted": 0.806
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 2.513,
+      "predicted": 2.546
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.593,
+      "predicted": 0.516
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.001
+    },
+    {
+      "actual": 2.037,
+      "predicted": 2.026
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.985,
+      "predicted": 0.997
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.112,
+      "predicted": 0.124
+    },
+    {
+      "actual": 1.696,
+      "predicted": 1.593
+    },
+    {
+      "actual": 0.935,
+      "predicted": 0.939
+    },
+    {
+      "actual": 2.542,
+      "predicted": 2.543
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.005
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 1.831,
+      "predicted": 2.517
+    },
+    {
+      "actual": 2.618,
+      "predicted": 2.535
+    },
+    {
+      "actual": 2.929,
+      "predicted": 2.945
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.03,
+      "predicted": 0.033
+    },
+    {
+      "actual": 2.205,
+      "predicted": 2.227
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.004
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.001
+    },
+    {
+      "actual": 0.704,
+      "predicted": 0.675
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 1.84,
+      "predicted": 1.887
+    },
+    {
+      "actual": 1.478,
+      "predicted": 1.478
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 2.744,
+      "predicted": 2.725
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.03,
+      "predicted": 0.027
+    },
+    {
+      "actual": 0.073,
+      "predicted": 0.065
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 1.891,
+      "predicted": 1.888
+    },
+    {
+      "actual": 0.612,
+      "predicted": 0.937
+    },
+    {
+      "actual": 2.066,
+      "predicted": 2.067
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.001
+    },
+    {
+      "actual": 0.081,
+      "predicted": 0.087
+    },
+    {
+      "actual": 1.301,
+      "predicted": 1.356
+    },
+    {
+      "actual": 1.173,
+      "predicted": 1.18
+    },
+    {
+      "actual": 2.406,
+      "predicted": 2.441
+    },
+    {
+      "actual": 0.004,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 1.132,
+      "predicted": 1.143
+    },
+    {
+      "actual": 2.514,
+      "predicted": 2.576
+    },
+    {
+      "actual": 2.064,
+      "predicted": 2.082
+    },
+    {
+      "actual": 1.971,
+      "predicted": 1.961
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.078,
+      "predicted": 0.065
+    },
+    {
+      "actual": 0.086,
+      "predicted": 0.083
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.001
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.695,
+      "predicted": 0.669
+    },
+    {
+      "actual": 1.445,
+      "predicted": 2.066
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.001
+    },
+    {
+      "actual": 0.895,
+      "predicted": 0.871
+    },
+    {
+      "actual": 2.235,
+      "predicted": 2.009
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 2.021,
+      "predicted": 1.989
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 1.391,
+      "predicted": 1.315
+    },
+    {
+      "actual": 0.287,
+      "predicted": 0.444
+    },
+    {
+      "actual": 0.021,
+      "predicted": 0.019
+    },
+    {
+      "actual": 0.837,
+      "predicted": 1.071
+    },
+    {
+      "actual": 0.424,
+      "predicted": 0.392
+    },
+    {
+      "actual": 1.504,
+      "predicted": 1.5
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.255,
+      "predicted": 0.237
+    },
+    {
+      "actual": 0.52,
+      "predicted": 0.562
+    },
+    {
+      "actual": 0.596,
+      "predicted": 0.614
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.001
+    },
+    {
+      "actual": 0.285,
+      "predicted": 0.278
+    },
+    {
+      "actual": 2.23,
+      "predicted": 2.18
+    },
+    {
+      "actual": 1.562,
+      "predicted": 1.574
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 1.654,
+      "predicted": 1.62
+    },
+    {
+      "actual": 0.028,
+      "predicted": 0.025
+    },
+    {
+      "actual": 1.513,
+      "predicted": 1.508
+    },
+    {
+      "actual": 1.412,
+      "predicted": 1.447
+    },
+    {
+      "actual": 1.751,
+      "predicted": 1.749
+    },
+    {
+      "actual": 0.405,
+      "predicted": 0.375
+    },
+    {
+      "actual": 0.118,
+      "predicted": 0.13
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 0.0,
+      "predicted": -0.0
+    },
+    {
+      "actual": 2.461,
+      "predicted": 2.487
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 2.287,
+      "predicted": 2.301
+    },
+    {
+      "actual": 0.34,
+      "predicted": 0.332
+    },
+    {
+      "actual": 0.0,
+      "predicted": 0.0
+    },
+    {
+      "actual": 0.3,
+      "predicted": 0.297
     }
   ]
 }

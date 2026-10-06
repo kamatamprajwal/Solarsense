@@ -84,7 +84,14 @@ def train() -> dict:
 
     sample = pd.DataFrame({"actual": y_test.values, "predicted": y_pred}).sample(
         n=min(300, len(y_test)), random_state=1)
+    # Effective array size inferred from the data: kWh produced per 1000 W/m2.
+    sunny = df[df["solar_irradiance_w_m2"] > 200]
+    capacity_kw = float((sunny[TARGET] / (sunny["solar_irradiance_w_m2"] / 1000.0)).quantile(0.9))
     metrics = {
+        "dataset": {"rows": int(len(df)), "start": str(df["timestamp"].iloc[0]),
+                    "end": str(df["timestamp"].iloc[-1]),
+                    "max_yield_kwh": round(float(df[TARGET].max()), 3)},
+        "capacity_kw_est": round(capacity_kw, 2),
         "mae": round(mae, 4),
         "mse": round(mse, 4),
         "rmse": round(float(np.sqrt(mse)), 4),

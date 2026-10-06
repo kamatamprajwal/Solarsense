@@ -49,7 +49,7 @@ function Sensitivity({ form }) {
 }
 
 export default function Predictor() {
-  const { latest } = useTwin();
+  const { latest, status } = useTwin();
   const [form, setForm] = useState(PRESETS["Clear noon"]);
   const [result, setResult] = useState(null);
   const [tariff, setTariff] = useState(0.12);
@@ -97,7 +97,7 @@ export default function Predictor() {
             <div className="mt-3 text-xs text-muted-foreground">
               {diff != null ? <>vs live expected <span className="font-mono">{fmt(baseline, 2)}</span> → <span className={`font-mono font-bold ${diff >= 0 ? "text-energy" : "text-alert"}`}>{diff >= 0 ? "+" : ""}{diff.toFixed(2)} kWh</span></> : "Waiting for live data…"}
             </div>
-            <div className="mt-2 text-xs text-muted-foreground">Capacity factor <span className="font-mono font-bold text-foreground">{fmt(((result || 0) / 50) * 100)}%</span> of 50 kWp</div>
+            <div className="mt-2 text-xs text-muted-foreground">Capacity factor <span className="font-mono font-bold text-foreground">{fmt(((result || 0) / (status?.capacity_kw || 1)) * 100)}%</span> of {status?.capacity_kw ?? "--"} kWp</div>
           </Panel>
           <Panel title="Revenue impact" sub="Sustained for N hours at your tariff" testid="revenue-calculator">
             <div className="grid grid-cols-2 gap-3">

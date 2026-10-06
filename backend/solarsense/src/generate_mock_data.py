@@ -135,8 +135,12 @@ def generate(n_rows: int = N_ROWS, seed: int = 42) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def main() -> str:
+def main(force: bool = False) -> str:
+    """Write the synthetic CSV. Never overwrites an existing (e.g. user-supplied) file unless --force."""
     os.makedirs(DATA_DIR, exist_ok=True)
+    if os.path.exists(OUTPUT_CSV) and not force:
+        print(f"[generate_mock_data] {OUTPUT_CSV} already exists - skipping (use --force to regenerate)")
+        return OUTPUT_CSV
     df = generate()
     df.to_csv(OUTPUT_CSV, index=False)
     print(f"[generate_mock_data] Wrote {len(df):,} rows -> {OUTPUT_CSV}")
@@ -144,4 +148,5 @@ def main() -> str:
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    main(force="--force" in sys.argv)

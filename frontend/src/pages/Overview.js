@@ -10,17 +10,17 @@ import { AnomalyFeed } from "@/components/AnomalyFeed";
 import { ConditionsPanel } from "@/components/ConditionsPanel";
 import { downloadCsv, fmt } from "@/lib/api";
 
-const HERO = "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?crop=entropy&cs=srgb&fm=jpg&q=80&w=1600";
+const HERO = "https://images.unsplash.com/photo-1674606071893-2a9023075f70?crop=entropy&cs=srgb&fm=jpg&q=80&w=1600";
 
 function Hero() {
   const { status, latest } = useTwin();
   return (
     <div className="relative overflow-hidden rounded-xl border mb-6 reveal" data-testid="overview-hero">
       <img src={HERO} alt="Solar array" className="absolute inset-0 h-full w-full object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 to-slate-950/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 to-slate-950/65" />
       <div className="relative p-6 sm:p-8 text-white flex flex-col lg:flex-row gap-6 lg:items-end">
         <div className="max-w-xl">
-          <div className="eyebrow !text-amber-400">Site · Array A · 50 kWp · 48 modules</div>
+          <div className="eyebrow !text-amber-400">Site · Array A · {status?.capacity_kw ?? "--"} kWp · 48 modules</div>
           <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mt-2">Live digital twin</h1>
           <p className="text-sm sm:text-base text-slate-300 mt-2">XGBoost predicts what the array <em>should</em> produce every simulated hour. Any gap is a residual — big gaps are hardware faults.</p>
         </div>

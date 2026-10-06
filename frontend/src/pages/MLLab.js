@@ -78,7 +78,7 @@ function ResidualHistogram({ c }) {
           <XAxis dataKey="bin" tickLine={false} axisLine={false} />
           <YAxis tickLine={false} axisLine={false} scale="sqrt" />
           <Tooltip cursor={{ fill: "transparent" }} contentStyle={{ background: colors.card, border: `1px solid ${colors.grid}`, borderRadius: 8, fontSize: 12 }} />
-          <Bar dataKey="count" radius={[3, 3, 0, 0]}>{c.residual_histogram.map((d) => <Cell key={d.bin} fill={d.bin < -2 ? colors.alert : colors.violet} />)}</Bar>
+          <Bar dataKey="count" radius={[3, 3, 0, 0]}>{c.residual_histogram.map((d) => <Cell key={d.bin} fill={d.bin < c.mean_residual_anomaly / 2 ? colors.alert : colors.violet} />)}</Bar>
         </BarChart>
       </ResponsiveContainer>
     </div>
@@ -92,7 +92,7 @@ export default function MLLab() {
   if (!m || !c) return <div className="text-muted-foreground" data-testid="ml-lab-loading">Loading model artifacts…</div>;
   return (
     <div>
-      <PageHeader eyebrow="ML Lab" title="Model & anomaly engine" desc={`XGBoost regressor trained on ${m.n_train.toLocaleString()} rows, evaluated on ${m.n_test.toLocaleString()}. DBSCAN scans ${c.n_samples.toLocaleString()} daylight samples for hardware degradation.`} />
+      <PageHeader eyebrow="ML Lab" title="Model & anomaly engine" desc={`Dataset: solar_telemetry.csv (${m.dataset?.rows?.toLocaleString()} rows, ${m.dataset?.start?.slice(0, 10)} → ${m.dataset?.end?.slice(0, 10)}). XGBoost regressor trained on ${m.n_train.toLocaleString()} rows, evaluated on ${m.n_test.toLocaleString()}. DBSCAN scans ${c.n_samples.toLocaleString()} daylight samples for hardware degradation.`} />
       <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
         <KpiCard testid="metric-mae" label="MAE" value={m.mae.toFixed(3)} unit="kWh" icon={Target} tone="solar" hint="mean absolute error" />
         <KpiCard testid="metric-mse" label="MSE" value={m.mse.toFixed(3)} unit="kWh²" icon={Sigma} tone="cyan" hint="mean squared error" delay={60} />

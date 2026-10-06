@@ -42,7 +42,7 @@ function PanelDrawer({ panel, onClose, onService }) {
       <SheetContent data-testid="panel-drawer">
         <SheetHeader>
           <SheetTitle className="font-display text-2xl">Panel {panel.panel_id}</SheetTitle>
-          <SheetDescription>Monocrystalline 410 W module · string {Math.floor(panel.row / 2) + 1}</SheetDescription>
+          <SheetDescription>Monocrystalline module · string {Math.floor(panel.row / 2) + 1}</SheetDescription>
         </SheetHeader>
         <div className="mt-6 h-2 rounded-full bg-muted overflow-hidden"><div className={`h-full ${s.dot}`} style={{ width: `${panel.health}%` }} /></div>
         <dl className="mt-6 divide-y">
@@ -86,7 +86,7 @@ export default function PanelArray() {
         right={<div className="flex flex-wrap gap-1">{FILTERS.map((f) => (
           <button key={f} onClick={() => setFilter(f)} data-testid={`filter-${f}`} className={`px-3 py-1.5 rounded-full text-xs font-semibold capitalize transition-colors ${filter === f ? "bg-foreground text-background" : "bg-muted text-muted-foreground hover:text-foreground"}`}>{f}</button>
         ))}</div>}>
-        <div className="grid grid-cols-8 gap-1.5 sm:gap-2.5 max-w-4xl mx-auto">
+        <div className="grid grid-cols-8 gap-1.5 sm:gap-2.5 max-w-3xl mx-auto">
           {panels.map((p) => <PanelCell key={p.panel_id} p={p} dim={filter !== "all" && p.status !== filter} onClick={() => setSelectedId(p.panel_id)} />)}
         </div>
         <div className="mt-6 flex justify-center gap-8 text-[11px] font-mono text-muted-foreground"><span>◀ WEST · INVERTER BAY</span><span>EAST ▶</span></div>
