@@ -70,6 +70,15 @@ live_telemetry: List[dict] = []
 live_anomalies: List[dict] = []
 model = None
 
+# Event hooks: the platform backend subscribes to persist history / send alerts.
+# Each listener is a sync callable(event_name, payload) and must not block.
+event_listeners: List = []
+
+
+def emit(event: str, payload: dict) -> None:
+    for listener in event_listeners:
+        listener(event, dict(payload))
+
 
 def ensure_artifacts() -> None:
     """Bootstrap: train pipelines if the model / analysis artifacts are missing."""
@@ -211,6 +220,7 @@ class DigitalTwin:
         }
         live_anomalies.append(anomaly)
         del live_anomalies[:-ANOMALY_WINDOW]
+        emit("anomaly", anomaly)
         return anomaly
 
     @staticmethod
@@ -224,11 +234,18 @@ class DigitalTwin:
         return "healthy"
 
     def _recover_panels(self):
-        """Slow self-recovery models transient faults (clouds pass, rain cleans)."""
+        """Transient faults self-recover slowly; soiling only clears with rain or a crew."""
+        raining = self.cloud > 85
         for p in self.panels:
-            if p["health"] < 100 and p["status"] != "faulted":
+            if p["health"] >= 100 or p["status"] == "faulted":
+                continue
+            if p["status"] == "soiled":
+                if not raining:
+                    continue
+                p["health"] = round(min(100.0, p["health"] + 2.0), 1)
+            else:
                 p["health"] = round(min(100.0, p["health"] + 0.15), 1)
-                p["status"] = self._status_for(p["health"], p["last_fault"])
+            p["status"] = self._status_for(p["health"], p["last_fault"])
 
     def service_panel(self, panel_id: str) -> dict:
         panel = next((p for p in self.panels if p["panel_id"] == panel_id), None)
@@ -236,6 +253,7 @@ class DigitalTwin:
             raise HTTPException(status_code=404, detail="Panel not found")
         panel.update(health=100.0, status="healthy", last_fault=None,
                      last_serviced=self.sim_clock.isoformat())
+        emit("service", panel)
         return panel
 
     # ----------------------------------------------------------------- loop
@@ -334,6 +352,7 @@ async def acknowledge_anomaly(anomaly_id: str):
     for a in live_anomalies:
         if a["id"] == anomaly_id:
             a["acknowledged"] = True
+            emit("ack", a)
             return a
     raise HTTPException(status_code=404, detail="Anomaly not found")
 

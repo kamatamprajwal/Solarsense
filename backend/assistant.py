@@ -6,13 +6,11 @@ from datetime import datetime, timezone
 from emergentintegrations.llm.chat import LlmChat, StreamDone, TextDelta, UserMessage
 from fastapi import APIRouter
 from fastapi.responses import StreamingResponse
-from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel, Field
 
 import api as solarsense
+from db import db
 
-client = AsyncIOMotorClient(os.environ["MONGO_URL"])
-db = client[os.environ["DB_NAME"]]
 router = APIRouter(prefix="/assistant")
 
 SYSTEM_PROMPT = """You are SolarSense Copilot, an expert solar O&M (operations & maintenance) engineer.

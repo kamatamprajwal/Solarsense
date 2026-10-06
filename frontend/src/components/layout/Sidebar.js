@@ -1,10 +1,12 @@
 import { NavLink } from "react-router-dom";
-import { Activity, Bot, Cpu, FlaskConical, LayoutGrid, SlidersHorizontal, Sun, X } from "lucide-react";
+import { Activity, Bot, BrushCleaning, Cpu, FlaskConical, History, LayoutGrid, SlidersHorizontal, Sun, X } from "lucide-react";
 import { useTwin } from "@/context/TwinContext";
 
 export const NAV = [
   { to: "/", label: "Overview", sub: "Live telemetry", icon: Activity, id: "overview" },
   { to: "/array", label: "Panel Array", sub: "Digital twin map", icon: LayoutGrid, id: "array" },
+  { to: "/incidents", label: "Incident Log", sub: "History & email alerts", icon: History, id: "incidents" },
+  { to: "/cleaning", label: "Cleaning Planner", sub: "Optimal crew days", icon: BrushCleaning, id: "cleaning" },
   { to: "/predictor", label: "What-If Predictor", sub: "XGBoost inference", icon: SlidersHorizontal, id: "predictor" },
   { to: "/ml-lab", label: "ML Lab", sub: "Model & DBSCAN", icon: FlaskConical, id: "ml-lab" },
   { to: "/assistant", label: "AI Copilot", sub: "Maintenance advice", icon: Bot, id: "assistant" },

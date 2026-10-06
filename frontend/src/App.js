@@ -9,6 +9,8 @@ import Predictor from "@/pages/Predictor";
 import MLLab from "@/pages/MLLab";
 import Assistant from "@/pages/Assistant";
 import Architecture from "@/pages/Architecture";
+import Incidents from "@/pages/Incidents";
+import CleaningPlanner from "@/pages/CleaningPlanner";
 
 function ThemedToaster() {
   const { theme } = useTwin();
@@ -27,6 +29,8 @@ function App() {
             <Route path="/ml-lab" element={<MLLab />} />
             <Route path="/assistant" element={<Assistant />} />
             <Route path="/architecture" element={<Architecture />} />
+            <Route path="/incidents" element={<Incidents />} />
+            <Route path="/cleaning" element={<CleaningPlanner />} />
           </Route>
         </Routes>
       </BrowserRouter>

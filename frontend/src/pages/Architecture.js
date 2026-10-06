@@ -29,6 +29,10 @@ const ENDPOINTS = [
   ["POST", "/api/simulator/reset", "Reset twin state"],
   ["GET", "/api/ml/metrics · /api/ml/clusters", "Model + DBSCAN artifacts"],
   ["POST", "/api/assistant/chat", "Streaming AI Copilot (SSE)"],
+  ["GET", "/api/history/anomalies · /api/history/stats", "Permanent incident log (Mongo)"],
+  ["GET/PUT", "/api/alerts/settings · POST /api/alerts/test", "Fault alert emails (Resend)"],
+  ["GET", "/api/maintenance/cleaning-plan", "Optimal cleaning day planner"],
+  ["POST", "/api/maintenance/jobs · /{id}/complete", "Schedule & complete crew jobs"],
 ];
 
 const TREE = `solarsense/
@@ -86,7 +90,7 @@ export default function Architecture() {
           <div className="divide-y">
             {ENDPOINTS.map(([m, p, d]) => (
               <div key={p} className="flex items-center gap-3 py-2.5 text-sm">
-                <span className={`w-12 text-center rounded font-mono text-[10px] font-bold py-0.5 ${m === "GET" ? "bg-energy/15 text-energy" : "bg-solar/15 text-solar"}`}>{m}</span>
+                <span className={`w-14 text-center rounded font-mono text-[10px] font-bold py-0.5 ${m.startsWith("GET") ? "bg-energy/15 text-energy" : "bg-solar/15 text-solar"}`}>{m}</span>
                 <code className="font-mono text-xs">{p}</code>
                 <span className="ml-auto text-xs text-muted-foreground text-right hidden sm:block">{d}</span>
               </div>
